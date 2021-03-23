@@ -42,7 +42,7 @@ class AgifyTest {
     @Test
     void getAge() throws IOException {
         AgifyUser testUser = AgifyUserTest();
-        Assertions.assertEquals(48,testUser.getAge());
+        Assertions.assertEquals(25,testUser.getAge());
     }
 
     @Test
@@ -55,7 +55,7 @@ class AgifyTest {
     @Test
     void getCount() throws IOException {
         AgifyUser testUser = AgifyUserTest();
-        Assertions.assertEquals(24042,testUser.getCount());
+        Assertions.assertEquals(23318,testUser.getCount());
     }
 
     @Test
