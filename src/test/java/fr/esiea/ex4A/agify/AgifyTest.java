@@ -35,8 +35,8 @@ class AgifyTest {
     @Test
     void setName() throws IOException {
         AgifyUser testUser = AgifyUserTest();
-        testUser.setName("Mangan");
-        Assertions.assertEquals("Mangan",testUser.getName());
+        testUser.setName("mangan");
+        Assertions.assertEquals("mangan",testUser.getName());
     }
 
     @Test
@@ -48,8 +48,8 @@ class AgifyTest {
     @Test
     void setAge() throws IOException {
         AgifyUser testUser = AgifyUserTest();
-        testUser.setAge(24);
-        Assertions.assertEquals(24,testUser.getAge());
+        testUser.setAge(54);
+        Assertions.assertEquals(54,testUser.getAge());
     }
 
     @Test
