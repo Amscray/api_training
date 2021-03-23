@@ -1,4 +1,4 @@
-package fr.esiea.ex4A;
+package fr.esiea.ex4A.Agify;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -32,7 +32,7 @@ public class AgifyUser {
     }
 
     @JsonProperty("age")
-    public Integer getAgeUser() {
+    public Integer getAge() {
         return age;
     }
 
@@ -60,6 +60,8 @@ public class AgifyUser {
     public void setCountryId(String countryId) {
         this.countryId = countryId;
     }
+
+
 
 }
 
