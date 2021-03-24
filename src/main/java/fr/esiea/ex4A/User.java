@@ -16,19 +16,15 @@ public class User {
         this.userSex = userSex;
         this.userSexPref = userSexPref;
     }
-
-    public String getUserName() {
-        return userName;
-    }
-
     public String getUserMail() {
         return userEmail;
     }
-
+    public String getUserName() {
+        return userName;
+    }
     public String getUserTweeter() {
         return userTweeter;
     }
-
     public String getUserCountry() {
         return userCountry;
     }
