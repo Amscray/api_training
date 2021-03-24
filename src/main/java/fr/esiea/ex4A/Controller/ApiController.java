@@ -1,13 +1,15 @@
-package fr.esiea.ex4A;
+package fr.esiea.ex4A.Controller;
 
-import com.fasterxml.jackson.databind.deser.DataFormatReaders;
-import fr.esiea.ex4A.UserRepository;
+import fr.esiea.ex4A.Agify.AgifyClient;
+import fr.esiea.ex4A.Agify.AgifyUser;
+import fr.esiea.ex4A.MatchesData;
+import fr.esiea.ex4A.Service.AgifyService;
+import fr.esiea.ex4A.Repository.UserRepository;
 import fr.esiea.ex4A.User;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,33 +17,37 @@ import java.util.Map;
 class ApiController {
 
     private final UserRepository userRepository;
+    private final AgifyClient client;
+    private final AgifyService service;
 
-    ApiController(UserRepository userRepository) {
+    ApiController(UserRepository userRepository, AgifyClient client,AgifyService service) {
+
         this.userRepository = userRepository;
+        this.client=client;
+        this.service = service;
     }
 
     @PostMapping(path = "/api/inscription", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    User addUser(@RequestBody Map<String,String> body){
+    String addUser(@RequestBody Map<String,String> body){
         User user = new User(body.get("userName"), body.get("userMail"), body.get("userTwitter"), body.get("userCountry"), body.get("userSex"), body.get("userSexPref"));
-        userRepository.addUser(user);
-        for (User userInList : userRepository.getUsers()){
+
+        /*for (User userInList : userRepository.getUsers()){
             System.out.println(userInList.getUserName());
-        }
-        return user;
+        }*/
+        return "result : "+userRepository.addUser(user);
+
     }
 
-    @GetMapping(path = "/api/matches", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/api/matches", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     String match(@RequestParam(name = "userName" , required = true ) String userName,
                  @RequestParam(name = "userCountry", required = true) String userCountry) throws IOException{
-        ObjectMapper mapper = new ObjectMapper();
-        MatchesData match = new MatchesData("Lea","coucoumoi");
-        MatchesData match2 = new MatchesData("Lea2","coucoumoi1");
 
-        List<MatchesData> matchesDataList = new ArrayList<>();
-        matchesDataList.add(match);
-        matchesDataList.add(match2);
+        ObjectMapper mapper = new ObjectMapper();
+        AgifyUser prime = service.getAge(userName, userCountry);
+        List<MatchesData> matchesDataList = service.getMatches(prime.getAge());
+
         String matchResult = mapper.writeValueAsString(matchesDataList);
         return matchResult;
     }
