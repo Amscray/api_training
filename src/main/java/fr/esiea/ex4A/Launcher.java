@@ -14,7 +14,7 @@ public class Launcher {
     AgifyClient agify()
     {
         AgifyClient client = new Retrofit.Builder()
-            .baseUrl("https://api.agify.io")
+            .baseUrl("http://api.agify.io")
             .addConverterFactory(JacksonConverterFactory.create())
             .build()
             .create(AgifyClient.class);

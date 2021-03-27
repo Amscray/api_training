@@ -1,5 +1,6 @@
-package fr.esiea.ex4A;
+package fr.esiea.ex4A.Repository;
 import fr.esiea.ex4A.Repository.UserRepository;
+import fr.esiea.ex4A.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +12,7 @@ class UserRepositoryTest {
     @Test
     void getInscript()
     {
-        Assertions.assertEquals(userRepository.getUsers().size(), 6 );
+        Assertions.assertEquals(userRepository.getUsers().size(), 4 );
     }
 
     @Test

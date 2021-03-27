@@ -9,6 +9,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
 import java.io.IOException;
+import java.util.Map;
 
 class AgifyTest {
     @Test
@@ -19,10 +20,11 @@ class AgifyTest {
             .build()
             .create(AgifyClient.class);
 
-        Call<AgifyUser> user = test.getAgeUser("Marine","FR");
 
-        AgifyUser userFinal = user.execute().body();
-        return userFinal;
+        Call<Map<String, String>> user = test.getAgeUser("Marine", "FR");
+        Map<String, String> userFinal = user.execute().body();
+        return new AgifyUser(userFinal.get("name"), Integer.parseInt(userFinal.get("age")),Integer.parseInt(userFinal.get("count")),userFinal.get("country_id"));
+
     }
 
     @Test
