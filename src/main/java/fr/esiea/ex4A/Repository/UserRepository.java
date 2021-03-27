@@ -19,10 +19,6 @@ public class UserRepository {
         inscrit.add(user1);
         User user4 = new User("Chloe", "Chloe@et.esiea.fr", "chlochlo", "FR", "F", "M");
         inscrit.add(user2);
-        User user5 = new User("David", "David@et.esiea.fr", "Davidou", "FR", "M", "F");
-        inscrit.add(user1);
-        User user6 = new User("Capucine", "Capucine@et.esiea.fr", "Duniii", "FR", "F", "M");
-        inscrit.add(user2);
     }
 
 

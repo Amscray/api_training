@@ -32,12 +32,7 @@ class AgifyTest {
 
     }
 
-    @Test
-    void setName() throws IOException {
-        AgifyUser testUser = AgifyUserTest();
-        testUser.setName("mangan");
-        Assertions.assertEquals("mangan",testUser.getName());
-    }
+
 
     @Test
     void getAge() throws IOException {
@@ -45,12 +40,7 @@ class AgifyTest {
         Assertions.assertEquals(25,testUser.getAge());
     }
 
-    @Test
-    void setAge() throws IOException {
-        AgifyUser testUser = AgifyUserTest();
-        testUser.setAge(54);
-        Assertions.assertEquals(54,testUser.getAge());
-    }
+
 
     @Test
     void getCount() throws IOException {
@@ -58,12 +48,7 @@ class AgifyTest {
         Assertions.assertEquals(23318,testUser.getCount());
     }
 
-    @Test
-    void setCount() throws IOException {
-        AgifyUser testUser = AgifyUserTest();
-        testUser.setCount(420);
-        Assertions.assertEquals(420,testUser.getCount());
-    }
+
 
     @Test
     void getCountryId() throws IOException {
@@ -71,10 +56,5 @@ class AgifyTest {
         Assertions.assertEquals("FR",testUser.getCountryId());
     }
 
-    @Test
-    void setCountryId() throws IOException {
-        AgifyUser testUser = AgifyUserTest();
-        testUser.setCountryId("US");
-        Assertions.assertEquals("US",testUser.getCountryId());
-    }
+
 }
